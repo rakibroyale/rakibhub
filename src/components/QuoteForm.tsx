@@ -159,9 +159,8 @@ const QuoteForm = () => {
               Thank You!
             </h2>
             <p className="text-muted-foreground">
-              Your quote request has been prepared. Please send the email that was
-              opened to complete your submission. I'll get back to you within 24
-              hours.
+              Your quote request has been submitted successfully. I'll review your
+              project details and get back to you within 24 hours.
             </p>
           </motion.div>
         </div>
