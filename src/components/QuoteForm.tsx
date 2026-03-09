@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Send, CheckCircle } from "lucide-react";
+import { ArrowRight, ArrowLeft, Send, CheckCircle, Loader2 } from "lucide-react";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 /* =============================================
    GET A QUOTE — Multi-step dynamic form
@@ -49,6 +50,8 @@ const QuoteForm = () => {
   const [data, setData] = useState<FormData>(initialData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const update = (field: keyof FormData, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
@@ -80,7 +83,7 @@ const QuoteForm = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const result = contactSchema.safeParse({ name: data.name, email: data.email, phone: data.phone });
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -91,34 +94,38 @@ const QuoteForm = () => {
       return;
     }
 
+    setSubmitting(true);
+    setSubmitError("");
+
     const type = data.websiteType === "Others" ? data.customType : data.websiteType;
-    const conditional =
+    const pagesOrProducts =
       data.platform === "Shopify"
-        ? `Products: ${data.products}`
+        ? data.products
         : pagesPlatforms.includes(data.platform)
-        ? `Pages: ${data.pages}`
-        : "N/A";
+        ? data.pages
+        : null;
 
-    const body = [
-      `Website Type: ${type}`,
-      `Platform: ${data.platform}`,
-      conditional,
-      `Design References: ${data.references || "None provided"}`,
-      ``,
-      `Client Name: ${data.name}`,
-      `Email: ${data.email}`,
-      `Phone: ${data.phone}`,
-    ].join("\n");
+    try {
+      const { data: res, error } = await supabase.functions.invoke("send-quote", {
+        body: {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          websiteType: type,
+          platform: data.platform,
+          pagesOrProducts,
+          designReferences: data.references || null,
+        },
+      });
 
-    const subject = encodeURIComponent(`Quote Request from ${data.name}`);
-    const mailBody = encodeURIComponent(body);
-
-    window.open(
-      `mailto:mdbadruddozarakib@gmail.com?subject=${subject}&body=${mailBody}`,
-      "_self"
-    );
-
-    setSubmitted(true);
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error("Quote submission error:", err);
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const next = () => {
@@ -152,9 +159,8 @@ const QuoteForm = () => {
               Thank You!
             </h2>
             <p className="text-muted-foreground">
-              Your quote request has been prepared. Please send the email that was
-              opened to complete your submission. I'll get back to you within 24
-              hours.
+              Your quote request has been submitted successfully. I'll review your
+              project details and get back to you within 24 hours.
             </p>
           </motion.div>
         </div>
@@ -381,14 +387,27 @@ const QuoteForm = () => {
             ) : (
               <button
                 onClick={handleSubmit}
-                disabled={!canNext()}
+                disabled={!canNext() || submitting}
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-xl text-sm font-medium neon-glow-sm hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Submit
-                <Send size={16} />
+                {submitting ? (
+                  <>
+                    Submitting
+                    <Loader2 size={16} className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Submit
+                    <Send size={16} />
+                  </>
+                )}
               </button>
             )}
           </div>
+
+          {submitError && (
+            <p className="text-destructive text-sm text-center mt-4">{submitError}</p>
+          )}
         </div>
       </div>
     </section>
