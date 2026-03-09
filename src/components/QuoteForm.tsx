@@ -50,6 +50,8 @@ const QuoteForm = () => {
   const [data, setData] = useState<FormData>(initialData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const update = (field: keyof FormData, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
