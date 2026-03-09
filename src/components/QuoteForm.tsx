@@ -83,7 +83,7 @@ const QuoteForm = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const result = contactSchema.safeParse({ name: data.name, email: data.email, phone: data.phone });
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -94,34 +94,38 @@ const QuoteForm = () => {
       return;
     }
 
+    setSubmitting(true);
+    setSubmitError("");
+
     const type = data.websiteType === "Others" ? data.customType : data.websiteType;
-    const conditional =
+    const pagesOrProducts =
       data.platform === "Shopify"
-        ? `Products: ${data.products}`
+        ? data.products
         : pagesPlatforms.includes(data.platform)
-        ? `Pages: ${data.pages}`
-        : "N/A";
+        ? data.pages
+        : null;
 
-    const body = [
-      `Website Type: ${type}`,
-      `Platform: ${data.platform}`,
-      conditional,
-      `Design References: ${data.references || "None provided"}`,
-      ``,
-      `Client Name: ${data.name}`,
-      `Email: ${data.email}`,
-      `Phone: ${data.phone}`,
-    ].join("\n");
+    try {
+      const { data: res, error } = await supabase.functions.invoke("send-quote", {
+        body: {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          websiteType: type,
+          platform: data.platform,
+          pagesOrProducts,
+          designReferences: data.references || null,
+        },
+      });
 
-    const subject = encodeURIComponent(`Quote Request from ${data.name}`);
-    const mailBody = encodeURIComponent(body);
-
-    window.open(
-      `mailto:mdbadruddozarakib@gmail.com?subject=${subject}&body=${mailBody}`,
-      "_self"
-    );
-
-    setSubmitted(true);
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error("Quote submission error:", err);
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const next = () => {
