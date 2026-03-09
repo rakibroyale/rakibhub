@@ -23,6 +23,7 @@ const Index = () => {
       <QuoteForm />
       <Contact />
       <Footer />
+      <AIChatbot />
     </div>
   );
 };
