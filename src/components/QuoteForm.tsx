@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Send, CheckCircle } from "lucide-react";
+import { ArrowRight, ArrowLeft, Send, CheckCircle, Loader2 } from "lucide-react";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 /* =============================================
    GET A QUOTE — Multi-step dynamic form
