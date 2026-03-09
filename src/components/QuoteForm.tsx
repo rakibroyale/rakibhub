@@ -387,11 +387,20 @@ const QuoteForm = () => {
             ) : (
               <button
                 onClick={handleSubmit}
-                disabled={!canNext()}
+                disabled={!canNext() || submitting}
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-xl text-sm font-medium neon-glow-sm hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Submit
-                <Send size={16} />
+                {submitting ? (
+                  <>
+                    Submitting
+                    <Loader2 size={16} className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Submit
+                    <Send size={16} />
+                  </>
+                )}
               </button>
             )}
           </div>
