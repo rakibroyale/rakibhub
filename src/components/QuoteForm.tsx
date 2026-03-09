@@ -404,6 +404,10 @@ const QuoteForm = () => {
               </button>
             )}
           </div>
+
+          {submitError && (
+            <p className="text-destructive text-sm text-center mt-4">{submitError}</p>
+          )}
         </div>
       </div>
     </section>
