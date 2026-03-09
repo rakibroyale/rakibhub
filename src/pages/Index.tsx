@@ -8,6 +8,7 @@ import About from "@/components/About";
 import QuoteForm from "@/components/QuoteForm";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import AIChatbot from "@/components/AIChatbot";
 
 const Index = () => {
   return (
