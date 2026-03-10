@@ -14,8 +14,9 @@ const projects: { title: string; url: string; image: string; tag: string; video?
     tag: "Shopify",
   },
   {
-    title: "Volera Beauty",
-    url: "https://volerabeauty.com",
+    title: "Lumera",
+    url: "https://lumera2026.myshopify.com/",
+    video: "/videos/lumera-showcase.mp4",
     image: "/placeholder.svg",
     tag: "Shopify",
   },
