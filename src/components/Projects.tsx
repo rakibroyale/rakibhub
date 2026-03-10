@@ -5,11 +5,11 @@ import { ExternalLink } from "lucide-react";
    PROJECTS DATA
    Replace the `image` values with actual screenshots.
    ============================================= */
-const projects = [
+const projects: { title: string; url: string; image: string; tag: string; video?: string }[] = [
   {
     title: "Kyo Active",
     url: "https://kyoactive.com/en",
-    /* Replace with actual screenshot */
+    video: "/videos/kyo-active-showcase.mp4",
     image: "/placeholder.svg",
     tag: "Shopify",
   },
@@ -20,8 +20,8 @@ const projects = [
     tag: "Shopify",
   },
   {
-    title: "808 Clothing",
-    url: "https://808clo.com/en",
+    title: "DFYNE",
+    url: "https://uk.dfyne.com/",
     image: "/placeholder.svg",
     tag: "Shopify",
   },
@@ -77,12 +77,23 @@ const Projects = () => {
             >
               {/* Project image — replace placeholder.svg with real screenshots */}
               <div className="relative aspect-video bg-secondary overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={`${project.title} website preview`}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} website preview`}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                )}
                 <div className="absolute top-4 left-4">
                   <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/20 text-primary border border-primary/30">
                     {project.tag}
