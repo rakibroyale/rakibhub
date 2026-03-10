@@ -5,7 +5,7 @@ import { ExternalLink } from "lucide-react";
    PROJECTS DATA
    Replace the `image` values with actual screenshots.
    ============================================= */
-const projects = [
+const projects: { title: string; url: string; image: string; tag: string; video?: string }[] = [
   {
     title: "Kyo Active",
     url: "https://kyoactive.com/en",
