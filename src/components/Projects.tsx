@@ -22,12 +22,14 @@ const projects: { title: string; url: string; image: string; tag: string; video?
   {
     title: "DFYNE",
     url: "https://uk.dfyne.com/",
+    video: "/videos/dfyne-showcase.mp4",
     image: "/placeholder.svg",
     tag: "Shopify",
   },
   {
     title: "Peso Clothing",
     url: "https://pesoclo.com/en-row",
+    video: "/videos/peso-showcase.mp4",
     image: "/placeholder.svg",
     tag: "Shopify",
   },
