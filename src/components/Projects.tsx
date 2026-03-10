@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Kyo Active",
     url: "https://kyoactive.com/en",
-    /* Replace with actual screenshot */
+    video: "/videos/kyo-active-showcase.mp4",
     image: "/placeholder.svg",
     tag: "Shopify",
   },
@@ -20,8 +20,8 @@ const projects = [
     tag: "Shopify",
   },
   {
-    title: "808 Clothing",
-    url: "https://808clo.com/en",
+    title: "DFYNE",
+    url: "https://uk.dfyne.com/",
     image: "/placeholder.svg",
     tag: "Shopify",
   },
