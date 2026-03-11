@@ -22,7 +22,7 @@ const BrandScroller = () => {
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-50 hover:opacity-90 transition-opacity duration-300"
+                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
               />
             ) : (
               <span className="text-muted-foreground font-heading text-lg md:text-xl font-semibold whitespace-nowrap opacity-40 hover:opacity-80 transition-opacity duration-300">
