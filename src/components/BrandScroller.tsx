@@ -25,7 +25,7 @@ const BrandScroller = () => {
                 className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
               />
             ) : (
-              <span className="text-muted-foreground font-heading text-lg md:text-xl font-semibold whitespace-nowrap opacity-40 hover:opacity-80 transition-opacity duration-300">
+              <span className="text-muted-foreground font-heading text-lg md:text-xl font-semibold whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity duration-300">
                 {brand.name}
               </span>
             )}
