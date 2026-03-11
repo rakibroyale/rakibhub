@@ -2,9 +2,10 @@ const brands = [
   { name: "Kyo Active", logo: "/logos/kyo-active.svg" },
   { name: "Helyme", logo: "/logos/helyme.png" },
   { name: "808 Clothing", logo: "/logos/808-clo.png" },
-  { name: "Peso Clothing", logo: "/logos/peso.png" },
+  { name: "YFM", logo: "/logos/peso.png" },
   { name: "DFYNE", logo: "/logos/dfyne.png" },
   { name: "Lumera", logo: "/logos/lumera.png" },
+  { name: "Stellar Ropa", logo: "/logos/stellar-ropa.png" },
 ];
 
 const BrandScroller = () => {
