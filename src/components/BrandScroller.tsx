@@ -3,8 +3,8 @@ const brands = [
   { name: "Helyme", logo: "/logos/helyme.png" },
   { name: "808 Clothing", logo: "/logos/808-clo.png" },
   { name: "Peso Clothing", logo: "/logos/peso.png" },
-  { name: "DFYNE", logo: null },
-  { name: "Lumera", logo: null },
+  { name: "DFYNE", logo: "/logos/dfyne.png" },
+  { name: "Lumera", logo: "/logos/lumera.png" },
 ];
 
 const BrandScroller = () => {
