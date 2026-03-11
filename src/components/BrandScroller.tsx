@@ -3,8 +3,8 @@ const brands = [
   { name: "Helyme", logo: "/logos/helyme.png" },
   { name: "808 Clothing", logo: "/logos/808-clo.png" },
   { name: "Peso Clothing", logo: "/logos/peso.png" },
-  { name: "DFYNE", logo: null },
-  { name: "Lumera", logo: null },
+  { name: "DFYNE", logo: "/logos/dfyne.png" },
+  { name: "Lumera", logo: "/logos/lumera.png" },
 ];
 
 const BrandScroller = () => {
@@ -22,10 +22,10 @@ const BrandScroller = () => {
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-50 hover:opacity-90 transition-opacity duration-300"
+                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
               />
             ) : (
-              <span className="text-muted-foreground font-heading text-lg md:text-xl font-semibold whitespace-nowrap opacity-40 hover:opacity-80 transition-opacity duration-300">
+              <span className="text-muted-foreground font-heading text-lg md:text-xl font-semibold whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity duration-300">
                 {brand.name}
               </span>
             )}
