@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Send } from "lucide-react";
+import { Mail, Phone, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 
