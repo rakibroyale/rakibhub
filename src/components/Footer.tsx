@@ -1,3 +1,5 @@
+import { MessageCircle } from "lucide-react";
+
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
