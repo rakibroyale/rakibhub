@@ -108,6 +108,40 @@ const Contact = () => {
                 </p>
               </div>
             </a>
+
+            <a
+              href="https://wa.me/8801914394765"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 glass-card rounded-xl p-4 hover:border-primary/30 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <MessageCircle className="text-primary" size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">WhatsApp</p>
+                <p className="text-foreground text-sm font-medium">
+                  +880 1914 394765
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://facebook.com/rakib.royale"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 glass-card rounded-xl p-4 hover:border-primary/30 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">Facebook</p>
+                <p className="text-foreground text-sm font-medium">
+                  rakib.royale
+                </p>
+              </div>
+            </a>
           </motion.div>
 
           {/* Contact form */}
