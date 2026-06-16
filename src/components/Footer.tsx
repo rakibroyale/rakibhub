@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import rakibHubLogo from "@/assets/rakibhub-main.png.asset.json";
 
 const navLinks = [
   { label: "Services", href: "#services" },
