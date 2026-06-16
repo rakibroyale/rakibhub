@@ -30,8 +30,8 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="font-heading text-xl font-bold text-foreground tracking-tight">
-          MD Badruddoza <span className="text-primary">Rakib</span>
+        <a href="#hero" className="flex items-center" aria-label="Rakib Hub">
+          <img src={rakibHubLogo.url} alt="Rakib Hub - Digital Solutions" className="h-10 md:h-12 w-auto" />
         </a>
 
         {/* Desktop Navigation */}
