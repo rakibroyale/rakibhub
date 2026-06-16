@@ -15,9 +15,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           {/* Brand */}
           <div>
-            <p className="font-heading text-lg font-bold mb-2">
-              MD Badruddoza <span className="text-primary">Rakib</span>
-            </p>
+            <img src={rakibHubLogo.url} alt="Rakib Hub - Digital Solutions" className="h-12 w-auto mb-3" />
+
             <p className="text-muted-foreground text-sm leading-relaxed">
               Premium web development agency crafting high-performance digital
               experiences.
