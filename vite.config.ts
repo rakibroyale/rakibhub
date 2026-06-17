@@ -32,17 +32,13 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split vendor libraries into separate chunk
-          vendor: [
-            "react",
-            "react-dom",
-            "@tanstack/react-query",
-            "framer-motion",
-            "recharts",
-            "sonner",
-          ],
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "query": ["@tanstack/react-query"],
+          "motion": ["framer-motion"],
         },
       },
     },
+    cssCodeSplit: true,
+    minify: "esbuild",
   },
 }));
