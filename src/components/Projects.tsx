@@ -87,6 +87,9 @@ const Projects = () => {
                     loop
                     muted
                     playsInline
+                    preload="metadata"
+                    poster={project.image}
+                    aria-label={`${project.title} website preview`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
@@ -94,6 +97,9 @@ const Projects = () => {
                     src={project.image}
                     alt={`${project.title} website preview`}
                     loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="450"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 )}
